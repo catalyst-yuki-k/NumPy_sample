@@ -69,23 +69,41 @@ print(np.round(np.cos(np.radians([0, 90, 180, 270]))))
 
 
 # 正接(tan)
-# np.tan()を使う。
-print(np.tan(np.radians([0, 45, 90])))
-# [0.00000000e+00 1.00000000e+00 1.63312394e+16]
+# np.tan()を使う。ラジアンで指定する。
+print(np.tan(3.141592653589793))
+# -1.2246467991473532e-16
+# 角度で指定する場合はnp.radians()またはnp.deg2rad()で変換すると可読性が上がる。
+print(np.tan(np.radians(45)))
+# 0.9999999999999999
 # 配列を使うこともできる。
-print(np.degrees([0, np.pi/2, np.pi, np.pi*3/2]))
-# [  0.  90. 180. 270.]
+print(np.tan(np.radians([0, 30, 45, 90])))
+# [0.00000000e+00 5.77350269e-01 1.00000000e+00 1.63312394e+16]
+# 値を丸めたい場合はnp.round()を使う。
+print(np.round(np.tan(np.radians([0, 30, 45, 90]))))
+# [0.00000000e+00 1.00000000e+00 1.00000000e+00 1.63312394e+16]
 
 # 逆正弦
-# np.arcsin()を使う。
-print(np.degrees(np.arcsin([0, 0.5, 1])))
-# 
+# np.arcsin()を使う。ラジアンで指定する。
+print(np.arcsin(0))
+# 0.0
+# 角度で指定する場合はnp.radians()またはnp.deg2rad()で変換すると可読性が上がる。
+print(np.arcsin(np.radians(0)))
+# 0.0
 # 配列を使うこともできる。
-print(np.degrees([0, np.pi/2, np.pi, np.pi*3/2]))
-# 
+print(np.arcsin(np.radians([0, 15, 30, 45])))
+# [0.         0.26488615 0.55106958 0.90333911]
+# 配列を使うこともできる。
+print(np.arcsin([0, (np.pi)/8, (np.pi)/6, (np.pi)/4]))
+# [0.         0.26488615 0.55106958 0.90333911]
 
 # 逆余弦
-# np.arccos()を使う。
+# np.arccos()を使う。ラジアンで指定する。
+print(np.tan(3.141592653589793))
+# -1.2246467991473532e-16
+# 角度で指定する場合はnp.radians()またはnp.deg2rad()で変換すると可読性が上がる。
+print(np.tan(np.radians(45)))
+# 0.9999999999999999
+# 配列を使うこともできる。
 print(np.degrees(np.arccos([0, 0.5, 1])))
 # 
 # 配列を使うこともできる。
@@ -93,7 +111,13 @@ print(np.degrees([0, np.pi/2, np.pi, np.pi*3/2]))
 # 
 
 # 逆正接
-# np.arctan()またはnp.arctan2()を使う。
+# np.arctan()またはnp.arctan2()を使う。ラジアンで指定する。
+print(np.tan(3.141592653589793))
+# -1.2246467991473532e-16
+# 角度で指定する場合はnp.radians()またはnp.deg2rad()で変換すると可読性が上がる。
+print(np.tan(np.radians(45)))
+# 0.9999999999999999
+# 配列を使うこともできる。
 print(np.degrees(np.arctan([0, 1, np.inf])))
 # 
 # 配列を使うこともできる。
