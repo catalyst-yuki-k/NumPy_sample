@@ -121,3 +121,65 @@ matrix_x = np.array([-1, 2, -3])
 matrix_z = np.positive(matrix_x)
 print(matrix_z)
 # [-1  2 -3]
+
+# 累乗（型を保持する累乗関数）
+# １番目の引数を２番目の引数で累乗する
+# 累乗は英語でpower
+# ２番目の引数は定数とすることができる
+matrix_x = np.array([4, 5, 6])
+const_y = 3
+matrix_z = np.power(matrix_x,const_y)
+print(matrix_z)
+# [ 64 125 216]
+# ２番目の引数は配列とすることができる。
+# この時、１番目の配列の各要素は、２番目の配列の対応する要素で累乗される。
+matrix_x = np.array([4, 5, 6])
+matrix_y = np.array([1, 2, 3])
+matrix_z = np.power(matrix_x,matrix_y)
+print(matrix_z)
+# [  4  25 216]
+
+# 累乗（整数を float にキャストする累乗関数）
+# 引数が整数であっても結果は小数で表示される。
+# １番目の引数を２番目の引数で累乗する
+# ２番目の引数は定数とすることができる
+matrix_x = np.array([4, 5, 6])
+const_y = 3
+matrix_z = np.float_power(matrix_x,const_y)
+print(matrix_z)
+# [ 64. 125. 216.]
+# ２番目の引数は配列とすることができる。
+# この時、１番目の配列の各要素は、２番目の配列の対応する要素で累乗される。
+matrix_x = np.array([4, 5, 6])
+matrix_y = np.array([1, 2, 3])
+matrix_z = np.float_power(matrix_x,matrix_y)
+print(matrix_z)
+# [  4.  25. 216.]
+
+# 余り
+# １番目の引数を２番目の引数で割った余りが戻り値となる。
+matrix_x = np.array([4, 5, 6])
+matrix_y = np.array([1, 2, 3])
+matrix_z = np.remainder(matrix_x,matrix_y)
+print(matrix_z)
+# [0 1 0]
+
+# 余り
+# １番目の引数を２番目の引数で割った余りが戻り値となる。
+matrix_x = np.array([4, 5, 6])
+matrix_y = np.array([1, 2, 3])
+matrix_z = np.mod(matrix_x,matrix_y)
+print(matrix_z)
+# [0 1 0]
+
+# 負の被除数と除数の剰余演算の結果は、規約に拘束されます。
+# fmodの場合、結果の符号は被除数の符号ですが、remainderの結果の符号は除数の符号です。
+# このfmod関数は、Matlabのrem関数と同等です。
+# fmodは被除数(割られる数)の符号が結果の符号になる。
+# 下記の例では割られる側である[-3, -2, -1, 1, 2, 3]の符号と結果[-1  0 -1  1  0  1]の符号が一致している。
+print(np.fmod([-3, -2, -1, 1, 2, 3], 2))
+# [-1  0 -1  1  0  1]
+# remainderは除数(割る数)の符号が結果の符号になる。
+# 下記の例では割る側である2の符号と結果[1 0 1 1 0 1]の符号が一致している。
+print(np.remainder([-3, -2, -1, 1, 2, 3], 2))
+# [1 0 1 1 0 1]
