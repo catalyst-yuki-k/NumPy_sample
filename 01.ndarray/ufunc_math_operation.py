@@ -183,3 +183,47 @@ print(np.fmod([-3, -2, -1, 1, 2, 3], 2))
 # 下記の例では割る側である2の符号と結果[1 0 1 1 0 1]の符号が一致している。
 print(np.remainder([-3, -2, -1, 1, 2, 3], 2))
 # [1 0 1 1 0 1]
+
+# 商と余り
+# １番目の引数を２番目の引数で割った余りが戻り値となる。
+# 戻り値は商の配列と余りの配列である。
+matrix_x = np.array([4, 5, 6])
+matrix_y = np.array([1, 2, 3])
+matrix_z = np.divmod(matrix_x,matrix_y)
+print(matrix_z)
+# (array([4, 2, 2]), array([0, 1, 0]))
+
+# 絶対値
+matrix_x = np.array([-1, 2, -3])
+matrix_z = np.absolute(matrix_x)
+print(matrix_z)
+# [1 2 3]
+# 複素数の場合、実部と虚部の二乗平均(斜辺の長さ)
+print(np.absolute(3 + 4j))
+# 5.0
+
+# 絶対値(戻り値は必ず小数)
+matrix_x = np.array([-1, 2, -3])
+matrix_z = np.fabs(matrix_x)
+print(matrix_z)
+# [1. 2. 3.]
+
+# 四捨五入後の整数(戻り値は必ず小数)
+matrix_x = np.array([-1.2, 2.7, -3.5])
+matrix_z = np.rint(matrix_x)
+print(matrix_z)
+# [-1.  3. -4.]
+
+# 符号
+# 正の数に対して1、負の数に対して-1を返す。
+# ここで使用される定義は、x/√(x*x)で、これは一般的な代替手段であるx/|x|とは異なる。
+matrix_x = np.array([-1.2, 2.7, -3.5])
+matrix_z = np.sign(matrix_x)
+print(matrix_z)
+# [-1.  1. -1.]
+# 0に対して0を返す。
+print(np.sign(0))
+# 0
+# 虚部に対しては常に0jを返す
+print(np.sign(3 + 4j))
+# (1+0j)
