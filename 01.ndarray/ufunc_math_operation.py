@@ -227,3 +227,78 @@ print(np.sign(0))
 # 虚部に対しては常に0jを返す
 print(np.sign(3 + 4j))
 # (1+0j)
+
+# ヘヴィサイドの階段関数
+# heaviside(x1, x2)において
+# x1 < 0  のとき 0
+# x1 == 0 のとき x2
+# x1 > 0  のとき 1
+matrix_x = np.array([-1.5, 0, 2.0])
+const_y  = 0.5
+matrix_z = np.heaviside(matrix_x,const_y)
+print(matrix_z)
+# [0.  0.5 1. ]
+matrix_x = np.array([-1.5, 0, 2.0])
+const_y  = 1
+matrix_z = np.heaviside(matrix_x,const_y)
+print(matrix_z)
+# [0. 1. 1.]
+
+# 複素共役
+# 複素数の虚部を反数にした複素数をとる操作（写像）のこと
+# conjはconjugateのエイリアスである
+print(np.conjugate(1+2j))
+# (1-2j)
+print(np.conjugate(np.eye(2) + 1j * np.eye(2)))
+# [[1.-1.j 0.-0.j]
+#  [0.-0.j 1.-1.j]]
+
+# 指数
+# 入力配列のすべての要素の指数を計算します。
+# exp(x) の大きさと位相を複素平面にプロットします。
+import matplotlib.pyplot as plt
+
+x = np.linspace(-2*np.pi, 2*np.pi, 100)
+xx = x + 1j * x[:, np.newaxis]
+out = np.exp(xx)
+
+plt.subplot(121)
+plt.imshow(np.abs(out),extent=[-2*np.pi, 2*np.pi, -2*np.pi, 2*np.pi], cmap='gray')
+plt.title('Magnitude of exp(x)')
+
+plt.subplot(122)
+plt.imshow(np.angle(out),extent=[-2*np.pi, 2*np.pi, -2*np.pi, 2*np.pi], cmap='hsv')
+plt.title('Phase (angle) of exp(x)')
+plt.show()
+
+# 指数
+# 入力配列のすべての p に対して 2**p を計算します。
+print(np.exp2([2, 3]))
+# [4. 8.]
+
+# 対数
+# 要素ごとの自然対数。
+print(np.log([1, np.e, np.e**2, 0]))
+# [  0.   1.   2. -inf]
+
+# 対数
+# x の 2 を底とする対数。
+x = np.array([0, 1, 2, 2**4])
+print(np.log2(x))
+# [-inf   0.   1.   4.]
+xi = np.array([0+1.j, 1, 2+0.j, 4.j])
+print(np.log2(xi))
+# [0.+2.26618007j 0.+0.j         1.+0.j         2.+2.26618007j]
+
+# 自然対数
+# 入力配列の 10 を底とする対数を要素ごとに返します。
+print(np.log10([1e-15, -3.]))
+# [-15.  nan]
+
+# 指数関数exp(x)-1
+# 配列内のすべての要素について exp(x) - 1 を計算します。
+print(np.expm1(1e-10))
+# 1.00000000005e-10
+
+print(np.exp(1e-10) - 1)
+# 1.000000082740371e-10
