@@ -302,3 +302,54 @@ print(np.expm1(1e-10))
 
 print(np.exp(1e-10) - 1)
 # 1.000000082740371e-10
+
+# 対数関数log(1 + x)
+# 配列内のすべての要素について log(1 + x) を計算します。
+print(np.log1p(1e-99))
+# 
+
+print(np.log(1 + 1e-99))
+# 
+
+# 平方根(非負)
+# 配列内のすべての要素について非負の平方根を計算します。
+print(np.sqrt([1,4,9]))
+# [ 1.,  2.,  3.]
+print(np.sqrt([4, -1, -3+4J]))
+# [ 2.+0.j,  0.+1.j,  1.+2.j]
+print(np.sqrt([4, -1, np.inf]))
+# [ 2., nan, inf]
+
+# 平方根
+print(np.square([-1j, 1]))
+# [-1.-0.j,  1.+0.j]
+
+# 三乗根
+print(np.cbrt([1,8,27]))
+# [ 1.,  2.,  3.]
+
+# 逆数
+print(np.reciprocal(2.))
+# 0.5
+print(np.reciprocal([1, 2., 3.33]))
+# [ 1.       ,  0.5      ,  0.3003003]
+
+# 最大公約数
+# |x1|と|x2|の最大公約数を返す
+print(np.gcd(12, 20))
+# 4
+print(np.gcd.reduce([15, 25, 35]))
+# 5
+print(np.gcd(np.arange(6), 20))
+# [20,  1,  2,  1,  4,  5]
+
+# 最小公倍数
+# |x1|と|x2|の最小公倍数を返す
+print(np.lcm(12, 20))
+# 60
+print(np.lcm.reduce([3, 12, 20]))
+# 60
+print(np.lcm.reduce([40, 12, 20]))
+# 120
+print(np.lcm(np.arange(6), 20))
+# array([ 0, 20, 20, 60, 20, 20])
