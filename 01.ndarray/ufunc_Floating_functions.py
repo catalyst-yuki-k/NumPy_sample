@@ -2,6 +2,9 @@ import numpy as np
 
 # Recall that all of these functions work element-by-element over an array, returning an array output. 
 # The description details only a single operation.
+
+# isfinite(x, /[, out, where, casting, order, ...])
+# Test element-wise for finiteness (not infinity and not Not a Number).
 print(np.isfinite(1))
 # True
 print(np.isfinite(0))
@@ -30,11 +33,23 @@ print(y)
 # [0 1 0]
 
 
-# isfinite(x, /[, out, where, casting, order, ...])
-# Test element-wise for finiteness (not infinity and not Not a Number).
-
 # isinf(x, /[, out, where, casting, order, ...])
 # Test element-wise for positive or negative infinity.
+print(np.isinf(np.inf))
+# True
+print(np.isinf(np.nan))
+# False
+print(np.isinf(np.NINF))
+# True
+print(np.isinf([np.inf, -np.inf, 1.0, np.nan]))
+# [ True  True False False]
+x = np.array([-np.inf, 0., np.inf])
+y = np.array([2, 2, 2])
+print(np.isinf(x, y))
+# [1 0 1]
+print(y)
+# [1 0 1]
+
 
 # isnan(x, /[, out, where, casting, order, ...])
 # Test element-wise for NaN and return result as a boolean array.
