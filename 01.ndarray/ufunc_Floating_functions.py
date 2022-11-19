@@ -53,18 +53,55 @@ print(y)
 
 # isnan(x, /[, out, where, casting, order, ...])
 # Test element-wise for NaN and return result as a boolean array.
+print(np.isnan(np.nan))
+# True
+print(np.isnan(np.inf))
+# False
+print(np.isnan([np.log(-1.),1.,np.log(0)]))
+# [ True False False]
+
 
 # isnat(x, /[, out, where, casting, order, ...])
 # Test element-wise for NaT (not a time) and return result as a boolean array.
+print(np.isnat(np.datetime64("NaT")))
+# True
+print(np.isnat(np.datetime64("2016-01-01")))
+# False
+print(np.isnat(np.array(["NaT", "2016-01-01"], dtype="datetime64[ns]")))
+# [ True False]
+
 
 # fabs(x, /[, out, where, casting, order, ...])
 # Compute the absolute values element-wise.
+print(np.fabs(-1))
+# 1.0
+print(np.fabs([-1.2, 1.2]))
+# [ 1.2  1.2]
+
 
 # signbit(x, /[, out, where, casting, order, ...])
 # Returns element-wise True where signbit is set (less than zero).
+print(np.signbit(-1.2))
+# True
+print(np.signbit(np.array([1, -2.3, 2.1])))
+# [False  True False]
+
 
 # copysign(x1, x2, /[, out, where, casting, ...])
 # Change the sign of x1 to that of x2, element-wise.
+print(np.copysign(1.3, -1))
+# -1.3
+print(1/np.copysign(0, 1))
+# RuntimeWarning: divide by zero encountered in double_scalars
+# inf
+print(1/np.copysign(0, -1))
+# RuntimeWarning: divide by zero encountered in double_scalars
+# -inf
+print(np.copysign([-1, 0, 1], -1.1))
+# [-1. -0. -1.]
+print(np.copysign([-1, 0, 1], np.arange(3)-1))
+# [-1.  0.  1.]
+
 
 # nextafter(x1, x2, /[, out, where, casting, ...])
 # Return the next floating-point value after x1 towards x2, element-wise.
