@@ -105,28 +105,83 @@ print(np.copysign([-1, 0, 1], np.arange(3)-1))
 
 # nextafter(x1, x2, /[, out, where, casting, ...])
 # Return the next floating-point value after x1 towards x2, element-wise.
+eps = np.finfo(np.float64).eps
+print(np.nextafter(1, 2) == eps + 1)
+# True
+print(np.nextafter([1, 2], [2, 1]) == [eps + 1, 2 - eps])
+# [ True  True]
+
 
 # spacing(x, /[, out, where, casting, order, ...])
 # Return the distance between x and the nearest adjacent number.
+print(np.spacing(1) == np.finfo(np.float64).eps)
+# True
+
 
 # modf(x[, out1, out2], / [[, out, where, ...])
 # Return the fractional and integral parts of an array, element-wise.
+print(np.modf([0, 3.5]))
+# (array([0. , 0.5]), array([0., 3.]))
+print(np.modf(-0.5))
+# (-0.5, -0.0)
+
 
 # ldexp(x1, x2, /[, out, where, casting, ...])
 # Returns x1 * 2**x2, element-wise.
+print(np.ldexp(5, np.arange(4)))
+# [ 5. 10. 20. 40.]
+x = np.arange(6)
+print(np.ldexp(*np.frexp(x)))
+# [0. 1. 2. 3. 4. 5.]
+
 
 # frexp(x[, out1, out2], / [[, out, where, ...])
 # Decompose the elements of x into mantissa and twos exponent.
+x = np.arange(9)
+y1, y2 = np.frexp(x)
+print(y1)
+# [0.    0.5   0.5   0.75  0.5   0.625 0.75  0.875 0.5  ]
+print(y2)
+# [0 1 2 2 3 3 3 3 4]
+print(y1 * 2**y2)
+# [0. 1. 2. 3. 4. 5. 6. 7. 8.]
+
 
 # fmod(x1, x2, /[, out, where, casting, ...])
 # Returns the element-wise remainder of division.
+print(np.fmod([-3, -2, -1, 1, 2, 3], 2))
+# [-1  0 -1  1  0  1]
+print(np.remainder([-3, -2, -1, 1, 2, 3], 2))
+# [1 0 1 1 0 1]
+print(np.fmod([5, 3], [2, 2.]))
+# [1. 1.]
+a = np.arange(-3, 3).reshape(3, 2)
+print(a)
+# [[-3 -2]
+#  [-1  0]
+#  [ 1  2]]
+print(np.fmod(a, [2,2]))
+# [[-1  0]
+#  [-1  0]
+#  [ 1  0]]
+
 
 # floor(x, /[, out, where, casting, order, ...])
 # Return the floor of the input, element-wise.
+a = np.array([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0])
+print(np.floor(a))
+# [-2. -2. -1.  0.  1.  1.  2.]
+
 
 # ceil(x, /[, out, where, casting, order, ...])
 # Return the ceiling of the input, element-wise.
+a = np.array([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0])
+print(np.ceil(a))
+# [-1. -1. -0.  1.  2.  2.  2.]
+
 
 # trunc(x, /[, out, where, casting, order, ...])
 # Return the truncated value of the input, element-wise.
-
+a = np.array([-1.7, -1.5, -0.2, 0.2, 1.5, 1.7, 2.0])
+print(np.trunc(a))
+# [-1. -1. -0.  0.  1.  1.  2.]
