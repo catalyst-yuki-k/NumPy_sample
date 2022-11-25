@@ -1,3 +1,5 @@
+# https://numpy.org/doc/stable/reference/generated/numpy.ndarray.resize.html#numpy.ndarray.resize
+
 # NumPyをインポートする
 import numpy as np
 
